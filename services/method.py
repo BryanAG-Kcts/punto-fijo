@@ -10,10 +10,16 @@ Operations = operations.Operations
 
 class Method:
 
+    outputArea = None
+
+    @staticmethod
+    def setOutputArea(frame):
+        Method.outputArea = frame
+
     @staticmethod
     def generateTable():
 
-        frame = CTkFrame(None)
+        frame = CTkFrame(Method.outputArea)
         frame.columnconfigure([0, 1, 2, 3], weight=1)
 
         headLabelN = CTkLabel(frame, text="n")

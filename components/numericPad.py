@@ -33,7 +33,7 @@ class NumericPad:
         col = 2
         row = 0
 
-        frame = CTkFrame(root)
+        frame = CTkFrame(root, fg_color="white")
         frame.grid(row=2, column=0, sticky="nsew")
         frame.rowconfigure([0, 1, 2, 3], weight=1)
         frame.columnconfigure([0, 1, 2, 3], weight=1)
@@ -46,6 +46,7 @@ class NumericPad:
                 height=70,
                 fg_color="#C7C7C7",
                 hover_color="#bbb",
+                font=("Arial", 20),
                 text_color="#000",
             )
             button.grid(row=row, column=col, sticky="nsew", padx=5, pady=5)
@@ -60,6 +61,7 @@ class NumericPad:
             fg_color="#C7C7C7",
             text_color="#000",
             hover_color="#bbb",
+            font=("Arial", 20),
         )
         button.grid(row=3, column=1, sticky="nsew", padx=5, pady=5, columnspan=2)
 
@@ -70,6 +72,7 @@ class NumericPad:
             command=lambda: NumericPad.handleClick(0),
             fg_color="#C7C7C7",
             hover_color="#bbb",
+            font=("Arial", 20),
             text_color="#000",
         )
         button.grid(row=3, column=0, sticky="nsew", padx=5, pady=5)
@@ -83,6 +86,7 @@ class NumericPad:
                 command=lambda x=operation["value"]: NumericPad.handleClick(x),
                 fg_color="#C7C7C7",
                 hover_color="#bbb",
+                font=("Arial", 20),
                 text_color="#000",
             )
             button.grid(

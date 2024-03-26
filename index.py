@@ -6,7 +6,10 @@ from components import (
     output,
     errorInput,
     enterButton,
+    exceptions,
 )
+
+from services import method
 
 # Desestructurar métodos y atributos
 EntryInput = entryInput.EntryInput
@@ -15,6 +18,8 @@ FirstValueInput = firstValueInput.FirstValueInput
 ErrorInput = errorInput.ErrorInput
 Output = output.Output
 EnterButton = enterButton.EnterButton
+Exceptions = exceptions.Exceptions
+Method = method.Method
 
 # app config
 app = CTk()
@@ -25,19 +30,20 @@ app.columnconfigure(0, weight=1)
 app.rowconfigure(0, weight=1)
 
 # Global Frames
-inputFrame = CTkFrame(app)
+inputFrame = CTkFrame(app, fg_color="#fff")
 inputFrame.grid(row=1, column=0, sticky="nsew")
 inputFrame.columnconfigure(0, weight=5)
 inputFrame.columnconfigure([1, 2, 3], weight=1)
 inputFrame.rowconfigure(0, weight=1)
 
 # inits
-
 EntryInput.init(inputFrame)
 FirstValueInput.init(inputFrame)
 ErrorInput.init(inputFrame)
 EnterButton.init(inputFrame)
 
-Output.init(app)
+outputArea = Output.init(app)
+Method.setOutputArea(outputArea)
+Exceptions.init(app)
 NumericPad.init(app)
 app.mainloop()
