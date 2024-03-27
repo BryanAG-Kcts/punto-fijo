@@ -1,5 +1,6 @@
 from math import *
 from math import ceil
+from math import sqrt
 
 
 class Operations:
@@ -26,11 +27,21 @@ class Operations:
         return Operations.roundUp(percent, 4)
 
     @staticmethod
-    def radical(value, n=2):
+    def radical(tuple):
+        print(type(tuple))
+        if type(tuple) is int or type(tuple) is float:
+            return sqrt(tuple)
+
+        value, n = tuple
         return pow(value, 1 / n)
 
     @staticmethod
-    def logAlias(value, n=10):
+    def logAlias(tuple):
+
+        if type(tuple) is int or type(tuple) is float:
+            return log(tuple)
+
+        value, n = tuple
         return log(value, n)
 
     @staticmethod

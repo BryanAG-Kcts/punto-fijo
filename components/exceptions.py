@@ -15,5 +15,13 @@ class Exceptions:
         if Exceptions.label is not None:
             Exceptions.label.destroy()
 
-        Exceptions.label = CTkLabel(Exceptions.root, text=exception)
-        Exceptions.label.grid(row=3, column=0)
+        Exceptions.label = CTkLabel(
+            Exceptions.root,
+            text=exception,
+            fg_color="#ffdfdf",
+        )
+        Exceptions.label.grid(
+            row=3,
+            column=0,
+            sticky="nsew",
+        )

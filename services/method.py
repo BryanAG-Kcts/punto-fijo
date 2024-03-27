@@ -43,7 +43,7 @@ class Method:
         if fnGx.count("x") == 0:
             raise Exception("La función debe contener al menos una variable x")
 
-        fnGx += " + x "
+        fnGx = "x + " + fnGx
 
         while True:
 
@@ -87,12 +87,12 @@ class Method:
         gx = gx.replace("√", "Operations.radical")
         gx = sub(r"\|([^|]+)\|", "abs(\\1)", gx)
 
-        gx = gx.replace("sen⁻¹(", "asin(radians")
-        gx = gx.replace("cos⁻¹(", "acos(radians")
-        gx = gx.replace("tan⁻¹(", "atan(radians")
-
         gx = gx.replace("sen(", "sin(radians")
         gx = gx.replace("cos(", "cos(radians")
         gx = gx.replace("tan(", "tan(radians")
+
+        gx = gx.replace("sen⁻¹(", "asin(radians")
+        gx = gx.replace("cos⁻¹(", "acos(radians")
+        gx = gx.replace("tan⁻¹(", "atan(radians")
 
         return Operations.evaluateQuery(gx)
