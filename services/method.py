@@ -1,6 +1,7 @@
 from customtkinter import CTkFrame, CTkLabel
 from components import firstValueInput, entryInput, errorInput
 from services import operations
+from re import sub
 
 FirstValueInput = firstValueInput.FirstValueInput
 EntryInput = entryInput.EntryInput
@@ -74,6 +75,24 @@ class Method:
 
     @staticmethod
     def getFunctionValue(gx, x):
+        gx = gx.replace("X", "x")
         gx = gx.replace("x", f"({x})")
         gx = gx.replace("^", "**")
+        gx = gx.replace("π", "pi")
+        gx = gx.replace("(", "((")
+        gx = gx.replace(")", "))")
+
+        gx = gx.replace("log", "Operations.logAlias")
+        gx = gx.replace("ln", "log")
+        gx = gx.replace("√", "Operations.radical")
+        gx = sub(r"\|([^|]+)\|", "abs(\\1)", gx)
+
+        gx = gx.replace("sen⁻¹(", "asin(radians")
+        gx = gx.replace("cos⁻¹(", "acos(radians")
+        gx = gx.replace("tan⁻¹(", "atan(radians")
+
+        gx = gx.replace("sen(", "sin(radians")
+        gx = gx.replace("cos(", "cos(radians")
+        gx = gx.replace("tan(", "tan(radians")
+
         return Operations.evaluateQuery(gx)

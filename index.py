@@ -7,6 +7,7 @@ from components import (
     errorInput,
     enterButton,
     exceptions,
+    mathFunctionsBoard,
 )
 
 from services import method
@@ -20,6 +21,7 @@ Output = output.Output
 EnterButton = enterButton.EnterButton
 Exceptions = exceptions.Exceptions
 Method = method.Method
+MathFunctionsBoard = mathFunctionsBoard.MathFunctionsBoard
 
 # app config
 app = CTk()
@@ -39,6 +41,7 @@ inputFrame.rowconfigure(0, weight=1)
 tabView = CTkTabview(app, fg_color="#fff")
 tabView.grid(row=2, column=0, sticky="nsew")
 opBasicas = tabView.add("Numeros y operaciones básicas")
+mathFunctions = tabView.add("Funciones matemáticas")
 
 # inits
 EntryInput.init(inputFrame)
@@ -50,4 +53,5 @@ outputArea = Output.init(app)
 Method.setOutputArea(outputArea)
 Exceptions.init(app)
 NumericPad.init(opBasicas)
+MathFunctionsBoard.init(mathFunctions)
 app.mainloop()
