@@ -1,4 +1,4 @@
-from customtkinter import CTk, CTkFrame
+from customtkinter import CTk, CTkFrame, CTkTabview
 from components import (
     entryInput,
     numericPad,
@@ -31,10 +31,14 @@ app.rowconfigure(0, weight=1)
 
 # Global Frames
 inputFrame = CTkFrame(app, fg_color="#fff")
-inputFrame.grid(row=1, column=0, sticky="nsew")
+inputFrame.grid(row=1, column=0, sticky="nsew", pady=10)
 inputFrame.columnconfigure(0, weight=5)
 inputFrame.columnconfigure([1, 2, 3], weight=1)
 inputFrame.rowconfigure(0, weight=1)
+
+tabView = CTkTabview(app, fg_color="#fff")
+tabView.grid(row=2, column=0, sticky="nsew")
+opBasicas = tabView.add("Numeros y operaciones básicas")
 
 # inits
 EntryInput.init(inputFrame)
@@ -45,5 +49,5 @@ EnterButton.init(inputFrame)
 outputArea = Output.init(app)
 Method.setOutputArea(outputArea)
 Exceptions.init(app)
-NumericPad.init(app)
+NumericPad.init(opBasicas)
 app.mainloop()

@@ -14,6 +14,7 @@ class ErrorInput:
             height=70,
             placeholder_text="Ingresar error",
             font=("Arial", 20),
+            justify="center",
         )
         ErrorInput.entry.grid(row=0, column=2, sticky="nsew", padx=5)
 

@@ -5,6 +5,10 @@ class Operations:
 
     @staticmethod
     def calculateError(x, x0):
+
+        if x == 0:
+            return 0
+
         numerator = x - x0
         error = numerator / x
         absError = abs(error)
@@ -17,5 +21,6 @@ class Operations:
 
     @staticmethod
     def parsePercent(value):
+        print(value)
         percent = value * 100
-        return round(percent, 4)
+        return percent

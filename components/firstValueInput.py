@@ -12,6 +12,7 @@ class FirstValueInput:
             height=70,
             placeholder_text="Ingresar valor inicial X0",
             font=("Arial", 20),
+            justify="center",
         )
         FirstValueInput.entry.grid(row=0, column=1, sticky="nsew", padx=5)
 

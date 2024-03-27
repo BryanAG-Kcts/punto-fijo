@@ -34,7 +34,7 @@ class NumericPad:
         row = 0
 
         frame = CTkFrame(root, fg_color="white")
-        frame.grid(row=2, column=0, sticky="nsew")
+        frame.pack(fill="both", expand=True)
         frame.rowconfigure([0, 1, 2, 3], weight=1)
         frame.columnconfigure([0, 1, 2, 3], weight=1)
 
