@@ -46,11 +46,9 @@ class Method:
         fnGx = "x + " + fnGx
 
         while True:
-
             gx = Method.getFunctionValue(fnGx, x)
             e = Operations.calculateError(gx, x)
             e = Operations.parsePercent(e)
-
             print(f"n: {n}, x: {x}, g(x): {gx}, e: {e}")
 
             labelN = CTkLabel(frame, text=n)
@@ -69,6 +67,12 @@ class Method:
             n += 1
 
             if e <= err:
+                break
+
+            if n > 100:
+                raise Exception(
+                    "La función no converge (Se hicieron más de 100 iteraciones). Disminuye el porcentaje de error o dar un valor inicial más cercano"
+                )
                 break
 
         return frame
@@ -94,5 +98,4 @@ class Method:
         gx = gx.replace("sen⁻¹(", "asin(radians")
         gx = gx.replace("cos⁻¹(", "acos(radians")
         gx = gx.replace("tan⁻¹(", "atan(radians")
-
         return Operations.evaluateQuery(gx)

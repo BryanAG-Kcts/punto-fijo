@@ -12,9 +12,8 @@ class Exceptions:
 
     @staticmethod
     def showError(exception):
-        if Exceptions.label is not None:
-            Exceptions.label.destroy()
 
+        Exceptions.destroyLabel()
         Exceptions.label = CTkLabel(
             Exceptions.root,
             text=exception,
@@ -25,3 +24,8 @@ class Exceptions:
             column=0,
             sticky="nsew",
         )
+
+    @staticmethod
+    def destroyLabel():
+        if Exceptions.label is not None:
+            Exceptions.label.destroy()
