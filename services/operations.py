@@ -1,6 +1,4 @@
-from math import *
-from math import ceil
-from math import sqrt
+from sympy import *
 
 
 class Operations:
@@ -17,32 +15,17 @@ class Operations:
         return Operations.roundUp(absError, 4)
 
     @staticmethod
-    def evaluateQuery(query):
-        evaluatedQuery = eval(query)
+    def evaluateQuery(query, numReplace):
+        x = Symbol("x")
+        func = parse_expr(query, evaluate=False)
+        evaluatedQuery = func.subs(x, numReplace).evalf()
+        print(evaluatedQuery)
         return Operations.roundUp(evaluatedQuery, 4)
 
     @staticmethod
     def parsePercent(value):
         percent = value * 100
         return Operations.roundUp(percent, 4)
-
-    @staticmethod
-    def radical(tuple):
-        print(type(tuple))
-        if type(tuple) is int or type(tuple) is float:
-            return sqrt(tuple)
-
-        value, n = tuple
-        return pow(value, 1 / n)
-
-    @staticmethod
-    def logAlias(tuple):
-
-        if type(tuple) is int or type(tuple) is float:
-            return log(tuple)
-
-        value, n = tuple
-        return log(value, n)
 
     @staticmethod
     def roundUp(value, n=2):

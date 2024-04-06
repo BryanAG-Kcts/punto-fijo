@@ -1,4 +1,5 @@
 from customtkinter import CTk, CTkFrame, CTkTabview
+
 from components import (
     entryInput,
     numericPad,
@@ -30,17 +31,29 @@ app._set_appearance_mode("light")
 app.title("Método de punto fijo 192096")
 app.columnconfigure(0, weight=1)
 app.rowconfigure(0, weight=1)
-
 # Global Frames
-inputFrame = CTkFrame(app, fg_color="#fff")
+mainTab = CTkTabview(app)
+mainTab.grid(row=0, column=0, sticky="nsew")
+mainTab.columnconfigure(0, weight=1)
+# mainTab.rowconfigure(0, weight=1)
+
+index = mainTab.add("Método de punto fijo")
+docs = mainTab.add("Documentación")
+index.columnconfigure(0, weight=1)
+index.rowconfigure(0, weight=1)
+# index.rowconfigure([1, 2], weight=1)
+docs.columnconfigure(0, weight=1)
+docs.rowconfigure(1, weight=1)
+
+inputFrame = CTkFrame(index)
 inputFrame.grid(row=1, column=0, sticky="nsew", pady=10)
 inputFrame.columnconfigure(0, weight=5)
 inputFrame.columnconfigure([1, 2, 3], weight=1)
 inputFrame.rowconfigure(0, weight=1)
 
-tabView = CTkTabview(app, fg_color="#fff")
+tabView = CTkTabview(index)
 tabView.grid(row=2, column=0, sticky="nsew")
-opBasicas = tabView.add("Numeros y operaciones básicas")
+opBasicas = tabView.add("Números y operaciones básicas")
 mathFunctions = tabView.add("Funciones matemáticas")
 
 # inits
@@ -49,9 +62,9 @@ FirstValueInput.init(inputFrame)
 ErrorInput.init(inputFrame)
 EnterButton.init(inputFrame)
 
-outputArea = Output.init(app)
+outputArea = Output.init(index)
 Method.setOutputArea(outputArea)
-Exceptions.init(app)
+Exceptions.init(index)
 NumericPad.init(opBasicas)
 MathFunctionsBoard.init(mathFunctions)
 app.mainloop()

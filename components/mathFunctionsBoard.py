@@ -15,12 +15,12 @@ mathFunctions = [
     {"name": "log", "value": "log(x, base)"},
     {"name": "√", "value": "√(x, rad)"},
     {"name": "abs", "value": "|x|"},
-    {"name": "sen⁻¹", "value": "sen⁻¹(x)"},
-    {"name": "cos⁻¹", "value": "cos⁻¹(x)"},
-    {"name": "tan⁻¹", "value": "tan⁻¹(x)"},
+    {"name": "csc", "value": "csc(x)"},
+    {"name": "sec", "value": "sec(x)"},
+    {"name": "cot", "value": "cot(x)"},
     {"name": "e^x", "value": "e^x"},
     {"name": "log10", "value": "log(x)"},
-    {"name": "²√(x)", "value": "√(x)"},
+    {"name": "²√(x)", "value": "√(x , 2)"},
     {"name": "()", "value": "( )"},
     {"name": "x²", "value": "x^2"},
 ]
@@ -37,7 +37,7 @@ class MathFunctionsBoard:
         row = 0
         col = 0
 
-        frame = CTkFrame(root, fg_color="white")
+        frame = CTkFrame(root)
         frame.pack(fill="both", expand=True)
         frame.columnconfigure([0, 1, 2, 3, 4, 5], weight=1)
         for mathFunction in mathFunctions:

@@ -79,23 +79,20 @@ class Method:
 
     @staticmethod
     def getFunctionValue(gx, x):
-        gx = gx.replace("X", "x")
-        gx = gx.replace("x", f"({x})")
         gx = gx.replace("^", "**")
         gx = gx.replace("π", "pi")
+        gx = gx.replace("e", "E")
         gx = gx.replace("(", "((")
         gx = gx.replace(")", "))")
 
-        gx = gx.replace("log", "Operations.logAlias")
-        gx = gx.replace("ln", "log")
         gx = gx.replace("√", "Operations.radical")
         gx = sub(r"\|([^|]+)\|", "abs(\\1)", gx)
 
-        gx = gx.replace("sen(", "sin(radians")
-        gx = gx.replace("cos(", "cos(radians")
-        gx = gx.replace("tan(", "tan(radians")
+        gx = gx.replace("sen(", "sin(rad")
+        gx = gx.replace("cos(", "cos(rad")
+        gx = gx.replace("tan(", "tan(rad")
 
-        gx = gx.replace("sen⁻¹(", "asin(radians")
-        gx = gx.replace("cos⁻¹(", "acos(radians")
-        gx = gx.replace("tan⁻¹(", "atan(radians")
-        return Operations.evaluateQuery(gx)
+        gx = gx.replace("csc(", "csc(rad")
+        gx = gx.replace("sec(", "sec(rad")
+        gx = gx.replace("cot(", "cot(rad")
+        return Operations.evaluateQuery(gx, x)
