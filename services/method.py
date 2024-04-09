@@ -32,7 +32,7 @@ class Method:
         headLabelGx = CTkLabel(frame, text="g(x)", fg_color="#4fa7eb")
         headLabelGx.grid(row=0, column=2, sticky="nsew")
 
-        headLabelE = CTkLabel(frame, text="|e|", fg_color="#4fa7eb")
+        headLabelE = CTkLabel(frame, text="|eₐ|", fg_color="#4fa7eb")
         headLabelE.grid(row=0, column=3, sticky="nsew")
 
         n = 1

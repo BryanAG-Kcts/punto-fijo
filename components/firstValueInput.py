@@ -17,4 +17,4 @@ class FirstValueInput:
         FirstValueInput.entry.grid(row=0, column=1, sticky="nsew", padx=5)
 
     def getValue():
-        return FirstValueInput.entry.get()
+        return FirstValueInput.entry.get() or 0

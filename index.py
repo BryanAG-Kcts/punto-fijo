@@ -12,6 +12,8 @@ from components import (
 )
 
 from services import method
+from documentation import docs as doc
+from documentation.constants import DocConstants
 
 # Desestructurar métodos y atributos
 EntryInput = entryInput.EntryInput
@@ -23,6 +25,7 @@ EnterButton = enterButton.EnterButton
 Exceptions = exceptions.Exceptions
 Method = method.Method
 MathFunctionsBoard = mathFunctionsBoard.MathFunctionsBoard
+Docs = doc.Docs
 
 # app config
 app = CTk()
@@ -57,14 +60,18 @@ opBasicas = tabView.add("Números y operaciones básicas")
 mathFunctions = tabView.add("Funciones matemáticas")
 
 # inits
+DocConstants.init()
+
 EntryInput.init(inputFrame)
 FirstValueInput.init(inputFrame)
 ErrorInput.init(inputFrame)
 EnterButton.init(inputFrame)
 
+Docs.init(docs)
 outputArea = Output.init(index)
 Method.setOutputArea(outputArea)
 Exceptions.init(index)
 NumericPad.init(opBasicas)
 MathFunctionsBoard.init(mathFunctions)
+
 app.mainloop()

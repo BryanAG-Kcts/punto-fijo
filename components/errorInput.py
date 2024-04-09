@@ -19,4 +19,4 @@ class ErrorInput:
         ErrorInput.entry.grid(row=0, column=2, sticky="nsew", padx=5)
 
     def getPercentValue():
-        return Operations.parsePercent(float(ErrorInput.entry.get()))
+        return Operations.parsePercent(float(ErrorInput.entry.get() or 0.01))

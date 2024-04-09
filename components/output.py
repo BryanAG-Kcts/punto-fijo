@@ -14,7 +14,6 @@ class Output:
             padx=10,
             pady=10,
             fill="both",
-            expand=True,
         )
 
     @staticmethod

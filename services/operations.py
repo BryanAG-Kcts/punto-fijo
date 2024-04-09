@@ -1,4 +1,4 @@
-from sympy import *
+from sympy import parse_expr, Symbol
 
 
 class Operations:
@@ -18,8 +18,7 @@ class Operations:
     def evaluateQuery(query, numReplace):
         x = Symbol("x")
         func = parse_expr(query, evaluate=False)
-        evaluatedQuery = func.subs(x, numReplace).evalf()
-        print(evaluatedQuery)
+        evaluatedQuery = float(func.subs(x, numReplace).evalf())
         return Operations.roundUp(evaluatedQuery, 4)
 
     @staticmethod

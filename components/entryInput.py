@@ -21,3 +21,7 @@ class EntryInput:
     @staticmethod
     def getValue():
         return EntryInput.entry.get()
+
+    @staticmethod
+    def clear():
+        EntryInput.entry.delete(0, "end")
