@@ -4,6 +4,21 @@ from documentation.constants import DocConstants
 
 class UseGuide:
 
+    guides = [
+        {
+            "title": "Input de entrada",
+            "description": "Aquí insertarás tu función expresada en x. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable x.",
+        },
+        {
+            "title": "Valor inicial",
+            "description": "Inserta el valor inicial de x, desde este punto empezaremos a iterar. Por lo que entre más cercano al cero, menos iteraciones se realizarán.",
+        },
+        {
+            "title": "Error",
+            "description": "Inserta en decimal el error permitido, el sistema se encargará de convertirlo a porcentaje, se dejará de iterar cuando el error aproximado actual sea menor o igual al mínimo permitido",
+        },
+    ]
+
     @staticmethod
     def init(root):
         CTkLabel(
@@ -11,19 +26,17 @@ class UseGuide:
             font=DocConstants.h1Size,
             text="GUÍA DE USO",
         ).pack()
-
-        flex = CTkFrame(root, fg_color="#e0e0e0")
-        flex.pack()
-
-        CTkLabel(
-            flex,
-            font=DocConstants.pSize,
-            text="Input de entrada: ",
-            text_color="#4fa7eb",
-        ).grid(column=0, row=0)
+        text = ""
+        for guide in UseGuide.guides:
+            title = guide["title"]
+            desc = guide["description"]
+            text += f"{title}: {desc}\n\n"
 
         CTkLabel(
-            flex,
+            root,
+            text=text,
             font=DocConstants.pSize,
-            text="Input de entrada",
-        ).grid(column=1, row=0)
+            text_color="#aaa",
+            justify="left",
+            wraplength=900,
+        ).pack(pady=10)

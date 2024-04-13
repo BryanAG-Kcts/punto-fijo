@@ -1,4 +1,4 @@
-from sympy import parse_expr, Symbol
+from sympy import parse_expr, Symbol, diff
 
 
 class Operations:
@@ -15,10 +15,20 @@ class Operations:
         return Operations.roundUp(absError, 4)
 
     @staticmethod
+    def convergency(fx, crt):
+        x = Symbol("x")
+        derivate = diff(fx, x)
+        return -1 <= Operations.evaluateQuery(derivate, crt) <= 1
+
+    @staticmethod
+    def parseExpression(exp):
+        return parse_expr(exp)
+
+    @staticmethod
     def evaluateQuery(query, numReplace):
         x = Symbol("x")
-        func = parse_expr(query, evaluate=False)
-        evaluatedQuery = float(func.subs(x, numReplace).evalf())
+        toEval = query.subs(x, numReplace).evalf()
+        evaluatedQuery = float(toEval)
         return Operations.roundUp(evaluatedQuery, 4)
 
     @staticmethod

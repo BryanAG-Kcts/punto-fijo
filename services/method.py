@@ -1,7 +1,6 @@
 from customtkinter import CTkFrame, CTkLabel
 from components import firstValueInput, entryInput, errorInput
 from services import operations
-from re import sub
 
 FirstValueInput = firstValueInput.FirstValueInput
 EntryInput = entryInput.EntryInput
@@ -43,7 +42,8 @@ class Method:
         if fnGx.count("x") == 0:
             raise Exception("La función debe contener al menos una variable x")
 
-        fnGx = "x + " + fnGx
+        fnGx = Method.parseExpression(fnGx + "+ x")
+        fnGx = Method.getFunctionValue(fnGx, x)
 
         while True:
             gx = Method.getFunctionValue(fnGx, x)
@@ -69,30 +69,34 @@ class Method:
             if e <= err:
                 break
 
-            if n > 100:
-                raise Exception(
-                    "La función no converge (Se hicieron más de 100 iteraciones). Disminuye el porcentaje de error o dar un valor inicial más cercano"
-                )
-                break
+            convergency = Operations.convergency(fnGx, x)
+            if convergency:
+                raise Exception("La función no converge")
 
         return frame
 
     @staticmethod
     def getFunctionValue(gx, x):
+        return Operations.evaluateQuery(gx, x)
+
+    @staticmethod
+    def parseExpression(gx):
         gx = gx.replace("^", "**")
         gx = gx.replace("π", "pi")
-        gx = gx.replace("e", "E")
-        gx = gx.replace("(", "((")
-        gx = gx.replace(")", "))")
+        gx = gx.replace("°", "*pi/180")
+        # gx = gx.replace("e", "E")
+        # gx = gx.replace("(", "((")
+        # gx = gx.replace(")", "))")
 
-        gx = gx.replace("√", "Operations.radical")
-        gx = sub(r"\|([^|]+)\|", "abs(\\1)", gx)
+        gx = gx.replace("²√", "sqrt")
+        gx = gx.replace("√", "root")
 
-        gx = gx.replace("sen(", "sin(rad")
-        gx = gx.replace("cos(", "cos(rad")
-        gx = gx.replace("tan(", "tan(rad")
+        gx = gx.replace("sen(", "sin(")
+        gx = gx.replace("cos(", "cos(")
+        gx = gx.replace("tan(", "tan(")
 
-        gx = gx.replace("csc(", "csc(rad")
-        gx = gx.replace("sec(", "sec(rad")
-        gx = gx.replace("cot(", "cot(rad")
-        return Operations.evaluateQuery(gx, x)
+        gx = gx.replace("csc(", "csc(")
+        gx = gx.replace("sec(", "sec(")
+        gx = gx.replace("cot(", "cot(")
+
+        return gx

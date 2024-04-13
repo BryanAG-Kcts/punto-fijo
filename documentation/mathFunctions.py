@@ -1,0 +1,73 @@
+from customtkinter import CTkLabel
+from documentation.constants import DocConstants
+
+
+class MathFunctions:
+    functions = [
+        {
+            "title": "Exponente",
+            "description": "Puedes usar ^ o **",
+        },
+        {
+            "title": "Euler",
+            "description": "Puedes usar E",
+        },
+        {
+            "title": "Número π",
+            "description": "Puedes usar π o pi",
+        },
+        {
+            "title": "Radicando",
+            "description": "Puedes usar √(exp, rad) o root(exp, rad). Para una raíz cuadrada puedes usar ²√()",
+        },
+        {
+            "title": "seno",
+            "description": "Puedes usar sen(rad) o sin(rad)",
+        },
+        {
+            "title": "coseno",
+            "description": "Puedes usar cos(rad)",
+        },
+        {
+            "title": "tangente",
+            "description": "Puedes usar tan(rad)",
+        },
+        {
+            "title": "cosecante",
+            "description": "Puedes usar csc(rad)",
+        },
+        {
+            "title": "secante",
+            "description": "Puedes usar sec(rad)",
+        },
+        {
+            "title": "cotangente",
+            "description": "Puedes usar cot(rad)",
+        },
+        {
+            "title": "logaritmo",
+            "description": "Puedes usar log(x, base) para calcular cualquier logaritmo. Usa ln(x) o log(x) para calcular logaritmos naturales.",
+        },
+    ]
+
+    @staticmethod
+    def init(root):
+        CTkLabel(
+            root,
+            font=DocConstants.h1Size,
+            text="FUNCIONES PERMITIDAS",
+        ).pack()
+        text = ""
+        for guide in MathFunctions.functions:
+            title = guide["title"]
+            desc = guide["description"]
+            text += f"{title}: {desc}\n\n"
+
+        CTkLabel(
+            root,
+            text=text,
+            font=DocConstants.pSize,
+            text_color="#aaa",
+            justify="left",
+            wraplength=900,
+        ).pack(pady=10)

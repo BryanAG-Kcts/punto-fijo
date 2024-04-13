@@ -4,25 +4,23 @@ from components import entryInput
 EntryInput = entryInput.EntryInput
 
 mathFunctions = [
+    {"name": "euler", "value": "E"},
+    {"name": "^", "value": "^"},
+    {"name": "π", "value": "π"},
+    {"name": "()", "value": "( )"},
+    {"name": "x²", "value": "x^2"},
+    {"name": "e^x", "value": "e^x"},
+    {"name": "√", "value": "√(x, rad)"},
+    {"name": "²√x", "value": "²√(x)"},
     {"name": "seno", "value": "sen(x)"},
     {"name": "coseno", "value": "cos(x)"},
     {"name": "tangente", "value": "tan(x)"},
-    {"name": "e", "value": "e"},
-    #
-    {"name": "^", "value": "^"},
-    {"name": "π", "value": "π"},
+    {"name": "cosecante", "value": "csc(x)"},
+    {"name": "secante", "value": "sec(x)"},
+    {"name": "cotangente", "value": "cot(x)"},
     {"name": "ln", "value": "ln(x)"},
     {"name": "log", "value": "log(x, base)"},
-    {"name": "√", "value": "√(x, rad)"},
-    {"name": "abs", "value": "|x|"},
-    {"name": "csc", "value": "csc(x)"},
-    {"name": "sec", "value": "sec(x)"},
-    {"name": "cot", "value": "cot(x)"},
-    {"name": "e^x", "value": "e^x"},
-    {"name": "log10", "value": "log(x)"},
-    {"name": "²√(x)", "value": "√(x , 2)"},
-    {"name": "()", "value": "( )"},
-    {"name": "x²", "value": "x^2"},
+    {"name": "grados", "value": "°"},
 ]
 
 
