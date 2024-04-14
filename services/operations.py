@@ -1,4 +1,4 @@
-from sympy import parse_expr, Symbol, diff
+from sympy import parse_expr, Symbol, diff, solve, expand
 
 
 class Operations:
@@ -12,13 +12,25 @@ class Operations:
         numerator = x - x0
         error = numerator / x
         absError = abs(error)
-        return Operations.roundUp(absError, 4)
+        return Operations.roundUp(absError, 6)
 
     @staticmethod
     def convergency(fx, crt):
-        x = Symbol("x")
+        x = Operations.createSymbol("x")
         derivate = diff(fx, x)
         return -1 <= Operations.evaluateQuery(derivate, crt) <= 1
+
+    @staticmethod
+    def solveExpression(exp, symbol):
+        return solve(exp, symbol)
+
+    @staticmethod
+    def expandExpression(exp):
+        return expand(exp)
+
+    @staticmethod
+    def createSymbol(name):
+        return Symbol(name)
 
     @staticmethod
     def parseExpression(exp):
@@ -26,7 +38,7 @@ class Operations:
 
     @staticmethod
     def evaluateQuery(query, numReplace):
-        x = Symbol("x")
+        x = Operations.createSymbol("x")
         toEval = query.subs(x, numReplace).evalf()
         evaluatedQuery = float(toEval)
         return Operations.roundUp(evaluatedQuery, 4)

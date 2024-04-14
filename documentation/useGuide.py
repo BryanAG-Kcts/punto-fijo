@@ -7,15 +7,15 @@ class UseGuide:
     guides = [
         {
             "title": "Input de entrada",
-            "description": "Aquí insertarás tu función expresada en x. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable x.",
+            "description": "Aquí insertarás tu función expresada en x. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable x. No hay valor por defecto",
         },
         {
             "title": "Valor inicial",
-            "description": "Inserta el valor inicial de x, desde este punto empezaremos a iterar. Por lo que entre más cercano al cero, menos iteraciones se realizarán.",
+            "description": "Inserta el valor inicial de x, desde este punto empezaremos a iterar. Por lo que entre más cercano al cero, menos iteraciones se realizarán. Valor por defecto = 0",
         },
         {
             "title": "Error",
-            "description": "Inserta en decimal el error permitido, el sistema se encargará de convertirlo a porcentaje, se dejará de iterar cuando el error aproximado actual sea menor o igual al mínimo permitido",
+            "description": "Inserta en decimal el error permitido, el sistema se encargará de convertirlo a porcentaje, se dejará de iterar cuando el error aproximado actual sea menor o igual al mínimo permitido. Valor por defecto = 1%",
         },
     ]
 

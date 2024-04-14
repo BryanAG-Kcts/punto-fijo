@@ -9,7 +9,7 @@ mathFunctions = [
     {"name": "π", "value": "π"},
     {"name": "()", "value": "( )"},
     {"name": "x²", "value": "x^2"},
-    {"name": "e^x", "value": "e^x"},
+    {"name": "e^x", "value": "E^x"},
     {"name": "√", "value": "√(x, rad)"},
     {"name": "²√x", "value": "²√(x)"},
     {"name": "seno", "value": "sen(x)"},

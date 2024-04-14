@@ -17,50 +17,68 @@ class Method:
         Method.outputArea = frame
 
     @staticmethod
-    def generateTable():
+    def calculateGx():
+        x = float(FirstValueInput.getValue())
+        fnGx = EntryInput.getValue()
+        fnGx = Method.parseExpression(fnGx)
+        err = ErrorInput.getPercentValue()
+        y = Operations.createSymbol("y")
 
+        if fnGx.count("x") == 0:
+            raise Exception("La función debe contener al menos una variable x")
+
+        for i in range(len(fnGx)):
+            toReplace = [*fnGx]
+
+            if toReplace[i] == "x":
+                toReplace[i] = "y"
+                fnY = "".join(toReplace)
+                gx = Operations.expandExpression(fnY)
+                gx = Operations.solveExpression(fnY, y)
+
+                for j in range(len(gx)):
+                    try:
+                        response = Method.generateTable(x, gx[j], err)
+                        if response[0]:
+                            return response[1]
+                    except:
+                        pass
+
+        raise Exception("No se pudo encontrar una solución, la función no converge")
+
+    @staticmethod
+    def generateTable(x, fnGx, err):
         frame = CTkFrame(Method.outputArea, corner_radius=10)
         frame.columnconfigure([0, 1, 2, 3], weight=1)
 
         headLabelN = CTkLabel(frame, text="n", fg_color="#4fa7eb")
         headLabelN.grid(row=0, column=0, sticky="nsew")
 
-        headLabelX = CTkLabel(frame, text="X", fg_color="#4fa7eb")
+        headLabelX = CTkLabel(frame, text="x", fg_color="#4fa7eb")
         headLabelX.grid(row=0, column=1, sticky="nsew")
 
-        headLabelGx = CTkLabel(frame, text="g(x)", fg_color="#4fa7eb")
+        headLabelGx = CTkLabel(frame, text=f"x = {fnGx}", fg_color="#4fa7eb")
         headLabelGx.grid(row=0, column=2, sticky="nsew")
 
         headLabelE = CTkLabel(frame, text="|eₐ|", fg_color="#4fa7eb")
         headLabelE.grid(row=0, column=3, sticky="nsew")
 
         n = 1
-        x = float(FirstValueInput.getValue())
-        fnGx = EntryInput.getValue()
-        err = ErrorInput.getPercentValue()
-
-        if fnGx.count("x") == 0:
-            raise Exception("La función debe contener al menos una variable x")
-
-        fnGx = Method.parseExpression(fnGx + "+ x")
-        fnGx = Method.getFunctionValue(fnGx, x)
-
         while True:
             gx = Method.getFunctionValue(fnGx, x)
             e = Operations.calculateError(gx, x)
             e = Operations.parsePercent(e)
-            print(f"n: {n}, x: {x}, g(x): {gx}, e: {e}")
 
             labelN = CTkLabel(frame, text=n)
             labelN.grid(row=n, column=0)
 
-            labelX = CTkLabel(frame, text=x)
+            labelX = CTkLabel(frame, text=f"{x:.4f}")
             labelX.grid(row=n, column=1)
 
-            labelGx = CTkLabel(frame, text=gx)
+            labelGx = CTkLabel(frame, text=f"{gx:.4f}")
             labelGx.grid(row=n, column=2)
 
-            labelE = CTkLabel(frame, text=f"{e}%")
+            labelE = CTkLabel(frame, text=f"{e:.4f}%")
             labelE.grid(row=n, column=3)
 
             x = gx
@@ -70,10 +88,10 @@ class Method:
                 break
 
             convergency = Operations.convergency(fnGx, x)
-            if convergency:
-                raise Exception("La función no converge")
+            if not convergency:
+                return [False]
 
-        return frame
+        return [True, frame]
 
     @staticmethod
     def getFunctionValue(gx, x):
@@ -84,17 +102,11 @@ class Method:
         gx = gx.replace("^", "**")
         gx = gx.replace("π", "pi")
         gx = gx.replace("°", "*pi/180")
-        # gx = gx.replace("e", "E")
-        # gx = gx.replace("(", "((")
-        # gx = gx.replace(")", "))")
-
         gx = gx.replace("²√", "sqrt")
         gx = gx.replace("√", "root")
-
         gx = gx.replace("sen(", "sin(")
         gx = gx.replace("cos(", "cos(")
         gx = gx.replace("tan(", "tan(")
-
         gx = gx.replace("csc(", "csc(")
         gx = gx.replace("sec(", "sec(")
         gx = gx.replace("cot(", "cot(")

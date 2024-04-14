@@ -16,7 +16,7 @@ class Docs:
         frame.pack(fill="both", expand=True, side="left", padx=20)
 
         Method.setOutputArea(frame)
-        EntryInput.handleEntryValue("E^(-x) - x")
+        EntryInput.handleEntryValue("-x + E^(-x)")
 
         CTkLabel(
             frame,
