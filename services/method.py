@@ -1,11 +1,12 @@
 from customtkinter import CTkFrame, CTkLabel
 from components import firstValueInput, entryInput, errorInput
-from services import operations
+from services import operations, graphic
 
 FirstValueInput = firstValueInput.FirstValueInput
 EntryInput = entryInput.EntryInput
 ErrorInput = errorInput.ErrorInput
 Operations = operations.Operations
+Graphic = graphic.Graphic
 
 
 class Method:
@@ -21,6 +22,7 @@ class Method:
         x = float(FirstValueInput.getValue())
         fnGx = EntryInput.getValue()
         fnGx = Method.parseExpression(fnGx)
+        fx = Operations.parseExpression(fnGx)
         err = ErrorInput.getPercentValue()
         y = Operations.createSymbol("y")
 
@@ -40,6 +42,17 @@ class Method:
                     try:
                         response = Method.generateTable(x, gx[j], err)
                         if response[0]:
+
+                            _, frame, rows, xf = response
+
+                            Graphic.generateGraphic(
+                                frame,
+                                fx,
+                                gx[j],
+                                rows,
+                                x,
+                                xf,
+                            )
                             return response[1]
                     except:
                         pass
@@ -68,18 +81,19 @@ class Method:
             gx = Method.getFunctionValue(fnGx, x)
             e = Operations.calculateError(gx, x)
             e = Operations.parsePercent(e)
+            color = "#dbdbdb" if n % 2 == 0 else "#e0e0e0"
 
-            labelN = CTkLabel(frame, text=n)
-            labelN.grid(row=n, column=0)
+            labelN = CTkLabel(frame, text=n, fg_color=color)
+            labelN.grid(row=n, column=0, sticky="nsew")
 
-            labelX = CTkLabel(frame, text=f"{x:.4f}")
-            labelX.grid(row=n, column=1)
+            labelX = CTkLabel(frame, text=f"{x:.4f}", fg_color=color)
+            labelX.grid(row=n, column=1, sticky="nsew")
 
-            labelGx = CTkLabel(frame, text=f"{gx:.4f}")
-            labelGx.grid(row=n, column=2)
+            labelGx = CTkLabel(frame, text=f"{gx:.4f}", fg_color=color)
+            labelGx.grid(row=n, column=2, sticky="nsew")
 
-            labelE = CTkLabel(frame, text=f"{e:.4f}%")
-            labelE.grid(row=n, column=3)
+            labelE = CTkLabel(frame, text=f"{e:.4f}%", fg_color=color)
+            labelE.grid(row=n, column=3, sticky="nsew")
 
             x = gx
             n += 1
@@ -91,7 +105,7 @@ class Method:
             if not convergency:
                 return [False]
 
-        return [True, frame]
+        return [True, frame, n, x]
 
     @staticmethod
     def getFunctionValue(gx, x):
