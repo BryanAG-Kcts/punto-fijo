@@ -39,7 +39,9 @@ El método de punto fijo es un método iterativo de carácter abierto, usado en 
 
 La idea de este método es de transformar la ecuación original en una forma equivalente g(x)=x, donde estaremos iterando desde un valor inicial hasta llegar a una imagen con un valor aproximado de cero. Es decir, hallamos recursivamente los siguientes valores que tomara g(x) a partir del resultado previamente obtenido xₙ = g(xₙ₋₁).
 
-Para poder confirmar si g(x) eventualmente converge a cero, evaluamos la primera derivada de g(x), si esta es menor o igual a 1, podemos continuar, caso contrario, la función diverge y no tiene caso seguir iterando. Por ejemplo, tomemos como f(x) = e^(-x) - x, por lo que despejando x tenemos como g(x), x = e^(-x).""",
+Para poder confirmar si g(x) eventualmente converge a cero, evaluamos la primera derivada de g(x), si esta es menor o igual a 1, podemos continuar, caso contrario, la función diverge y no tiene caso seguir iterando. Por ejemplo, tomemos como f(x) = E^(-x) - x, por lo que despejando x tenemos como g(x), x = E^(-x). La línea roja representa g(x), mientras que la línea azul representa f(x)
+
+No todos los despejes de x nos llevarán a una aproximación de la respuesta, según el criterio de convergencia, el valor absoluto de la imagen de la derivada de g(x) debe ser menor o igual a 1, sino no convergerá""",
             text_color="#aaa",
             justify="left",
             wraplength=900,
