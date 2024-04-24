@@ -7,11 +7,23 @@ from PIL import Image
 class Graphic:
 
     graphicCounter = 0
+    isDocs = True
 
     @staticmethod
     def generateGraphic(root, gx, rows, x0, xf):
+        if Graphic.isDocs :
+            Graphic.isDocs = False
+            img = Image.open("images/graph_0.png")
+            image = CTkImage(img, size=(400, 400))
+            canvas = CTkLabel(root, image=image, text="")
+            canvas.grid(row=rows, column=0, columnspan=4, sticky="nsew", pady=20)
+            Graphic.graphicCounter += 1
+            return None
+        
         x = Symbol("x")
-        functionRange = (x, x0 - 1, xf + 1)
+        minRange = x0 - 1
+        maxRange = xf + 1
+        functionRange = (x, minRange, maxRange)
         plotter = plot(gx, functionRange, show=False, line_color="red", ylabel=gx)
         plotter.append(plot(x, functionRange, show=False, line_color="blue")[0])
         plotter.append(plot_implicit(Eq(x, xf), show=False, line_color="green")[0])
@@ -22,3 +34,5 @@ class Graphic:
         canvas = CTkLabel(root, image=image, text="")
         canvas.grid(row=rows, column=0, columnspan=4, sticky="nsew", pady=20)
         Graphic.graphicCounter += 1
+                
+        return plotter

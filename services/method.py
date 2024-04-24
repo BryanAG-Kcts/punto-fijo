@@ -44,14 +44,14 @@ class Method:
 
                             _, frame, rows, xf = response
 
-                            Graphic.generateGraphic(
+                            plotter = Graphic.generateGraphic(
                                 frame,
                                 gx[j],
                                 rows,
-                                x,
-                                xf,
+                                float(x),
+                                float(xf),
                             )
-                            return response[1]
+                            return [response[1], plotter]
                     except:
                         pass
 

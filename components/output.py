@@ -10,12 +10,14 @@ class Output:
     def print():
         Exceptions.destroyLabel()
         try:
-            frame = Method.calculateGx()
+            frame, plotter = Method.calculateGx()
             frame.pack(
                 padx=10,
                 pady=10,
                 fill="both",
             )
+            if plotter is not None :
+                plotter.show()
         except MemoryError:
             Exceptions.showError("Números demasiado grandes, posible divergencia")
         except OverflowError:
