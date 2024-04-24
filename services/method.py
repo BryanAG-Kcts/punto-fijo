@@ -22,7 +22,6 @@ class Method:
         x = float(FirstValueInput.getValue())
         fnGx = EntryInput.getValue()
         fnGx = Method.parseExpression(fnGx)
-        fx = Operations.parseExpression(fnGx)
         err = ErrorInput.getPercentValue()
         y = Operations.createSymbol("y")
 
@@ -47,7 +46,6 @@ class Method:
 
                             Graphic.generateGraphic(
                                 frame,
-                                fx,
                                 gx[j],
                                 rows,
                                 x,

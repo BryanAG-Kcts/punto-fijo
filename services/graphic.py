@@ -1,5 +1,5 @@
 from sympy.plotting import plot
-from sympy import Symbol
+from sympy import Symbol, plot_implicit, Eq
 from customtkinter import CTkImage, CTkLabel
 from PIL import Image
 
@@ -9,11 +9,12 @@ class Graphic:
     graphicCounter = 0
 
     @staticmethod
-    def generateGraphic(root, fx, gx, rows, x0, xf):
+    def generateGraphic(root, gx, rows, x0, xf):
         x = Symbol("x")
-        functionRange = (x, x0, xf)
-        plotter = plot(gx, functionRange, show=False, line_color="red", ylabel=fx)
-        plotter.append(plot(fx, functionRange, show=False, line_color="blue")[0])
+        functionRange = (x, x0 - 1, xf + 1)
+        plotter = plot(gx, functionRange, show=False, line_color="red", ylabel=gx)
+        plotter.append(plot(x, functionRange, show=False, line_color="blue")[0])
+        plotter.append(plot_implicit(Eq(x, xf), show=False, line_color="green")[0])
         plotter.save(f"images/graph_{Graphic.graphicCounter}.png")
         img = Image.open(f"images/graph_{Graphic.graphicCounter}.png")
 
