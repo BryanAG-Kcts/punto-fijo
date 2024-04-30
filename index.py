@@ -1,7 +1,7 @@
 from customtkinter import CTk, CTkFrame, CTkTabview
 import customtkinter
 
-customtkinter.set_appearance_mode("green-light")
+customtkinter.set_appearance_mode("light")
 
 from components import (
     entryInput,

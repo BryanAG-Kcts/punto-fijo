@@ -1,4 +1,4 @@
-from customtkinter import CTkLabel, CTkFrame
+from customtkinter import CTkLabel
 from documentation.constants import DocConstants
 
 
@@ -7,7 +7,7 @@ class UseGuide:
     guides = [
         {
             "title": "Input de entrada",
-            "description": "Aquí insertarás tu función expresada en x. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable x. No hay valor por defecto",
+            "description": "Aquí insertarás tu función expresada en x, no f(x) = 0, introduce en este input netamente la función. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable x. No hay valor por defecto",
         },
         {
             "title": "Valor inicial",
@@ -15,7 +15,7 @@ class UseGuide:
         },
         {
             "title": "Error",
-            "description": "Inserta en decimal el error permitido, el sistema se encargará de convertirlo a porcentaje, se dejará de iterar cuando el error aproximado actual sea menor o igual al mínimo permitido. Valor por defecto = 1%",
+            "description": "Inserta en decimal el error permitido, el sistema se encargará de convertirlo a porcentaje, se dejará de iterar cuando el error aproximado actual sea menor o igual al mínimo permitido. Valor por defecto = 0.01, es decir, 1%",
         },
     ]
 

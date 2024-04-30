@@ -6,12 +6,8 @@ from PIL import Image
 
 class Graphic:
 
-<<<<<<< HEAD
-    graphicCounter = 1
-=======
     graphicCounter = 0
     isDocs = True
->>>>>>> a64f7fd41e13693d98e04d6228003e92d29bfdb0
 
     @staticmethod
     def generateGraphic(root, gx, rows, x0, xf):
