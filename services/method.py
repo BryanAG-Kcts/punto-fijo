@@ -22,7 +22,6 @@ class Method:
         x = float(FirstValueInput.getValue())
         fnGx = EntryInput.getValue()
         fnGx = Method.parseExpression(fnGx)
-        fx = Operations.parseExpression(fnGx)
         err = ErrorInput.getPercentValue()
         y = Operations.createSymbol("y")
 
@@ -47,15 +46,14 @@ class Method:
 
                             _, frame, rows, xf = response
 
-                            Graphic.generateGraphic(
+                            plotter = Graphic.generateGraphic(
                                 frame,
-                                fx,
                                 gx[j],
                                 rows,
-                                x,
-                                xf,
+                                float(x),
+                                float(xf),
                             )
-                            return response[1]
+                            return [response[1], plotter]
                     except:
                         pass
         # Lanzar excepción si ningún despeje converge
