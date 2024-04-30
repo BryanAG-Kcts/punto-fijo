@@ -8,6 +8,7 @@ class Output:
 
     @staticmethod
     def print():
+        # Destruir label de error si existe para no duplicar. Distintos tipos de excepciones para dar mensajes más específicos
         Exceptions.destroyLabel()
         try:
             frame = Method.calculateGx()

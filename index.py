@@ -1,7 +1,7 @@
 from customtkinter import CTk, CTkFrame, CTkTabview
 import customtkinter
 
-customtkinter.set_appearance_mode("light")
+customtkinter.set_appearance_mode("green-light")
 
 from components import (
     entryInput,
@@ -41,7 +41,6 @@ app.rowconfigure(0, weight=1)
 mainTab = CTkTabview(app)
 mainTab.grid(row=0, column=0, sticky="nsew")
 mainTab.columnconfigure(0, weight=1)
-# mainTab.rowconfigure(0, weight=1)
 
 index = mainTab.add("Método de punto fijo")
 docs = mainTab.add("Documentación")

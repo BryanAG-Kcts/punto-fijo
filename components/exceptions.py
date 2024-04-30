@@ -27,5 +27,6 @@ class Exceptions:
 
     @staticmethod
     def destroyLabel():
+        # Destruir label para que no se dupliquen
         if Exceptions.label is not None:
             Exceptions.label.destroy()

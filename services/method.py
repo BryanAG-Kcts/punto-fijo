@@ -26,18 +26,20 @@ class Method:
         err = ErrorInput.getPercentValue()
         y = Operations.createSymbol("y")
 
+        # Si no tiene x la expresión, detener el proceso
         if fnGx.count("x") == 0:
             raise Exception("La función debe contener al menos una variable x")
 
+        # Recorro cada carácter de la expresión para interceptar las x y cambiarlas por y. Esto con el fin de poder despejar la función
         for i in range(len(fnGx)):
             toReplace = [*fnGx]
 
             if toReplace[i] == "x":
                 toReplace[i] = "y"
                 fnY = "".join(toReplace)
-                gx = Operations.expandExpression(fnY)
+                # gx = Operations.expandExpression(fnY)
                 gx = Operations.solveExpression(fnY, y)
-
+                # Recorro los posibles despejes de gx
                 for j in range(len(gx)):
                     try:
                         response = Method.generateTable(x, gx[j], err)
@@ -56,7 +58,7 @@ class Method:
                             return response[1]
                     except:
                         pass
-
+        # Lanzar excepción si ningún despeje converge
         raise Exception("No se pudo encontrar una solución, la función no converge")
 
     @staticmethod
@@ -98,13 +100,16 @@ class Method:
             x = gx
             n += 1
 
+            # Si el error actual es menor o igual al solicitado, romper ciclo
             if e <= err:
                 break
-
+                
+            # Si el remplazo de xi en g'(x) es mayor que 1 o menor que -1, significa que el despeje con converge
             convergency = Operations.convergency(fnGx, x)
             if not convergency:
                 return [False]
 
+        # Error, frame a renderizar, número de iteraciones, valor aproximado del cero
         return [True, frame, n, x]
 
     @staticmethod
@@ -113,6 +118,7 @@ class Method:
 
     @staticmethod
     def parseExpression(gx):
+        # Reemplazar caracteres especiales por sus equivalentes en Python
         gx = gx.replace("^", "**")
         gx = gx.replace("π", "pi")
         gx = gx.replace("°", "*pi/180")

@@ -17,4 +17,5 @@ class FirstValueInput:
         FirstValueInput.entry.grid(row=0, column=1, sticky="nsew", padx=5)
 
     def getValue():
+        # Si el valor ingresado es vacío, se asigna 0
         return FirstValueInput.entry.get() or 0

@@ -6,7 +6,7 @@ from PIL import Image
 
 class Graphic:
 
-    graphicCounter = 0
+    graphicCounter = 1
 
     @staticmethod
     def generateGraphic(root, fx, gx, rows, x0, xf):

@@ -38,6 +38,7 @@ class MathFunctionsBoard:
         frame = CTkFrame(root)
         frame.pack(fill="both", expand=True)
         frame.columnconfigure([0, 1, 2, 3, 4, 5], weight=1)
+
         for mathFunction in mathFunctions:
             button = CTkButton(
                 frame,
