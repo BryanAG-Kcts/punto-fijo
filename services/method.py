@@ -27,7 +27,7 @@ class Method:
 
         # Si no tiene x la expresión, detener el proceso
         if fnGx.count("y") != 0:
-            raise Exception("La variable y está reservada. Recuerda, f(x) debe estar en función de x")
+            raise Exception("La variable 'y' está reservada. Recuerda, f(x) debe estar en función de x")
 
         if fnGx.count("x") == 0:
             raise Exception("La función debe contener al menos una variable x")

@@ -7,11 +7,11 @@ class UseGuide:
     guides = [
         {
             "title": "Input de entrada",
-            "description": "Aquí insertarás tu función expresada en x, no f(x) = 0, introduce en este input netamente la función. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable x. No hay valor por defecto",
+            "description": "Aquí insertarás tu función expresada en x, no f(x) = 0, introduce en este input netamente la función. El sistema se encargará de hacer el despeje g(x). La función f(x) mínimo debe contener una variable xm puedes apoyarte con el panel numérico de la parte inferior. No hay valor por defecto",
         },
         {
             "title": "Valor inicial",
-            "description": "Inserta el valor inicial de x, desde este punto empezaremos a iterar. Por lo que entre más cercano al cero, menos iteraciones se realizarán. Valor por defecto = 0",
+            "description": "Inserta el valor inicial de x, desde este punto empezaremos a iterar. Por lo que entre más cercano al cero de la función, menos iteraciones se realizarán. Valor por defecto = 0",
         },
         {
             "title": "Error",
