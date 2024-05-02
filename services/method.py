@@ -36,7 +36,6 @@ class Method:
             if toReplace[i] == "x":
                 toReplace[i] = "y"
                 fnY = "".join(toReplace)
-                # gx = Operations.expandExpression(fnY)
                 gx = Operations.solveExpression(fnY, y)
                 # Recorro los posibles despejes de gx
                 for j in range(len(gx)):
@@ -101,7 +100,7 @@ class Method:
             # Si el error actual es menor o igual al solicitado, romper ciclo
             if e <= err:
                 break
-                
+
             # Si el remplazo de xi en g'(x) es mayor que 1 o menor que -1, significa que el despeje con converge
             convergency = Operations.convergency(fnGx, x)
             if not convergency:

@@ -34,7 +34,7 @@ python index.py
 
 ## ¿Como contribuir? 🛠
 
-El proyecto se divide en distintos directorios y módulos
+El proyecto se divide en distintos directorios y módulos. Ten en cuenta que el proyecto se ejecuta con Python 3.12.2
 
 - **components**
 
@@ -47,3 +47,13 @@ Cada vez que se agregue una funcionalidad nueva, si esta va a hacer usada por el
 - **services**
 
 Para separar grandes segmentos de lógica se optó por usar clases con atributos y métodos estáticos cuya función sea resolver problemas más no interferir con el flujo de componentes en la aplicación. Es decir, toda abstracción del problema que no involucre renderizar componentes en la aplicación debe ir en este directorio
+
+- **prototypes**
+
+Para tener un prototipo o un diseño a seguir, se guardarán estáticos del modelo final o representaciones de abstracciones de funcionalidades a completar
+
+## Problemas ❎
+
+No todos los ejercicios tienen solución, sin embargo, en ciertos casos se llegan a conclusiones que no tienen sentido. Sympy es la librería que usa este proyecto para hacer los despejes y evaluar expresiones, el problema aparece cuando operas con valores infinitos o indeterminados, pues devuelve resultados erróneos, o al menos, difíciles de manejar.
+
+Ejemplo: 1/log(0), log(0) si se toma individualmente, se evalúa correctamente, el resultado es zoo (complejo infinito), pero cuando se realiza la división el resultado es 0. Lo cual es un inconveniente porque le da solución a ejercicios que en realidad no la tienen, o si la tienen, el resultado es otro

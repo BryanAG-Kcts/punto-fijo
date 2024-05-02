@@ -9,7 +9,7 @@ class EntryInput:
         EntryInput.entry = CTkEntry(
             root,
             height=70,
-            placeholder_text="Ingresar f(x)",
+            placeholder_text="Ingresar función f(x)",
             font=("Arial", 20),
         )
         EntryInput.entry.grid(row=0, column=0, sticky="nsew", padx=5)

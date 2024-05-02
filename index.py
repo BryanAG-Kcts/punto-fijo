@@ -18,7 +18,7 @@ from services import method
 from documentation import docs as doc
 from documentation.constants import DocConstants
 
-# Desestructurar métodos y atributos
+# Desestructurar clases, métodos y atributos
 EntryInput = entryInput.EntryInput
 NumericPad = numericPad.NumericPad
 FirstValueInput = firstValueInput.FirstValueInput
@@ -43,10 +43,9 @@ mainTab.grid(row=0, column=0, sticky="nsew")
 mainTab.columnconfigure(0, weight=1)
 
 index = mainTab.add("Método de punto fijo")
-docs = mainTab.add("Documentación")
+docs = mainTab.add("Manual de uso")
 index.columnconfigure(0, weight=1)
 index.rowconfigure(0, weight=1)
-# index.rowconfigure([1, 2], weight=1)
 docs.columnconfigure(0, weight=1)
 docs.rowconfigure(1, weight=1)
 

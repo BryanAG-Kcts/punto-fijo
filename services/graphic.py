@@ -21,11 +21,8 @@ class Graphic:
             return None
         
         x = Symbol("x")
-        minRange = x0 - 1
-        maxRange = xf + 1
-        functionRange = (x, minRange, maxRange)
-        plotter = plot(gx, functionRange, show=False, line_color="red", ylabel=gx)
-        plotter.append(plot(x, functionRange, show=False, line_color="blue")[0])
+        plotter = plot(gx, show=False, line_color="red", ylabel=gx)
+        plotter.append(plot(x, show=False, line_color="blue")[0])
         plotter.append(plot_implicit(Eq(x, xf), show=False, line_color="green")[0])
         plotter.save(f"images/graph_{Graphic.graphicCounter}.png")
         img = Image.open(f"images/graph_{Graphic.graphicCounter}.png")

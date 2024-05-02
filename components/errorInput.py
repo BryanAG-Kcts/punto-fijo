@@ -12,7 +12,7 @@ class ErrorInput:
         ErrorInput.entry = CTkEntry(
             root,
             height=70,
-            placeholder_text="Ingresar error",
+            placeholder_text="Ingresar error, decimal",
             font=("Arial", 20),
             justify="center",
         )
