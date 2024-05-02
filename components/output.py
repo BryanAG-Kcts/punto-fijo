@@ -25,24 +25,10 @@ class Output:
             Exceptions.showError("Números demasiado grandes, posible divergencia")
         except ZeroDivisionError:
             Exceptions.showError("División por cero")
-        except IndexError:
-            Exceptions.showError("Campo(s) nulo")
-        except KeyError:
-            Exceptions.showError("Campo(s) nulo")
-        except AttributeError:
-            Exceptions.showError("Campo(s) nulo")
         except ArithmeticError:
-            Exceptions.showError("Operación no válida o posible división por cero")
+            Exceptions.showError("Operación no válida")
         except ValueError:
-            Exceptions.showError("Campo(s) nulo")
-        except NameError:
-            Exceptions.showError(
-                "Variable no definida o campo nulo. Recuerda, f(x) debe estar en función de x"
-            )
-        except TypeError:
-            Exceptions.showError("Operación no válida")
-        except SyntaxError:
-            Exceptions.showError("Operación no válida")
+            Exceptions.showError("Error de Sintaxis")
         except Exception as e:
             Exceptions.showError(e)
 

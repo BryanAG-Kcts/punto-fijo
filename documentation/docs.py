@@ -2,9 +2,10 @@ from customtkinter import CTkScrollableFrame, CTkLabel
 from services.method import Method
 from components.entryInput import EntryInput
 from components.output import Output
-from documentation.constants import DocConstants
-from documentation.useGuide import UseGuide
-from documentation.mathFunctions import MathFunctions
+from .constants import DocConstants
+from .useGuide import UseGuide
+from .mathFunctions import MathFunctions
+from .important import ImportantNotes
 
 
 class Docs:
@@ -51,3 +52,4 @@ No todos los despejes de x nos llevarán a una aproximación de la respuesta, se
         EntryInput.clear()
         UseGuide.init(frame)
         MathFunctions.init(frame)
+        ImportantNotes.init(frame)

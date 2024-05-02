@@ -49,12 +49,15 @@ class MathFunctions:
             "description": "Puedes usar log(x, base) para calcular cualquier logaritmo. Usa ln(x) o log(x) para calcular logaritmos naturales.",
         },
         {
-            "title": "Grados",
+            "title": "Radianes",
             "description": "Puedes usar ° para convertir grados a radianes. Por defecto, las funciones trigonométricas trabajan con radianes, por lo que es necesario una transformación si necesitas usar grados. Ejemplo, tan(90) = -1.9952 mientras que tan(90°) es indeterminado",
         },
         {
             "title": "Euler exponencial",
             "description": "Puedes usar exp(x) o E^x",
+        },{
+            "title": "Extras",
+            "description": "Puedes usar cualquier función soportada por Sympy (librería de Python). Puedes revisar su documentación oficial para enterarte de más funciones",
         },
     ]
 

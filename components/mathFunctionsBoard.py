@@ -5,11 +5,11 @@ EntryInput = entryInput.EntryInput
 
 mathFunctions = [
     {"name": "euler", "value": "E"},
-    {"name": "^", "value": "^"},
+    {"name": "exponente", "value": "^"},
     {"name": "π", "value": "π"},
     {"name": "()", "value": "( )"},
     {"name": "x²", "value": "x^2"},
-    {"name": "e^x", "value": "E^x"},
+    {"name": "E^x", "value": "E^x"},
     {"name": "√", "value": "√(x, rad)"},
     {"name": "²√x", "value": "²√(x)"},
     {"name": "seno", "value": "sen(x)"},
@@ -20,7 +20,7 @@ mathFunctions = [
     {"name": "cotangente", "value": "cot(x)"},
     {"name": "ln", "value": "ln(x)"},
     {"name": "log", "value": "log(x, base)"},
-    {"name": "grados", "value": "°"},
+    {"name": "radianes", "value": "°"},
 ]
 
 
