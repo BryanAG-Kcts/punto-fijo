@@ -16,9 +16,6 @@ class Docs:
         frame = CTkScrollableFrame(root, fg_color="#e0e0e0")
         frame.pack(fill="both", expand=True, side="left", padx=20)
 
-        Method.setOutputArea(frame)
-        EntryInput.handleEntryValue("-x + E^(-x)")
-
         CTkLabel(
             frame,
             font=DocConstants.h1Size,
@@ -48,6 +45,8 @@ No todos los despejes de x nos llevarán a una aproximación de la respuesta, se
             wraplength=900,
         ).pack(pady=20)
 
+        Method.setOutputArea(frame)
+        EntryInput.handleEntryValue("-x + E^(-x)")
         Output.print()
         EntryInput.clear()
         UseGuide.init(frame)

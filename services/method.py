@@ -24,21 +24,26 @@ class Method:
         fnGx = Method.parseExpression(fnGx)
         err = ErrorInput.getPercentValue()
         y = Operations.createSymbol("y")
+        continueAttempt = True
 
         # Si no tiene x la expresión, detener el proceso
         if fnGx.count("y") != 0:
-            raise Exception("La variable 'y' está reservada. Recuerda, f(x) debe estar en función de x")
+            raise Exception(
+                "La variable 'y' está reservada. Recuerda, f(x) debe estar en función de x"
+            )
 
         if fnGx.count("x") == 0:
             raise Exception("La función debe contener al menos una variable x")
 
         # Recorro cada carácter de la expresión para interceptar las x y cambiarlas por y. Esto con el fin de poder despejar la función
-        for i in range(len(fnGx)):
+        iterations = len(fnGx)
+        i = 0
+        while i < iterations:
             toReplace = [*fnGx]
-
             if toReplace[i] == "x":
                 toReplace[i] = "y"
                 fnY = "".join(toReplace)
+                print(fnY)
                 gx = Operations.solveExpression(fnY, y)
                 # Recorro los posibles despejes de gx
                 for j in range(len(gx)):
@@ -52,12 +57,21 @@ class Method:
                                 frame,
                                 gx[j],
                                 rows,
-                                float(x),
                                 float(xf),
                             )
                             return [response[1], plotter]
                     except:
                         pass
+
+            if (i == len(fnGx) - 1) and continueAttempt:
+                print("a")
+                continueAttempt = False
+                fnGx = "(" + fnGx + ") + x"
+                iterations = len(fnGx)
+                i = -1
+
+            i += 1
+
         # Lanzar excepción si ningún despeje converge
         raise Exception("No se pudo encontrar una solución, la función no converge")
 
@@ -110,6 +124,10 @@ class Method:
                 return [False]
 
         # Error, frame a renderizar, número de iteraciones, valor aproximado del cero
+        CTkLabel(
+            frame,
+            text=f"El valor aproximado del cero de la función, para un error de {err:.4f}% es de {x}",
+        ).grid(row=n + 1, column=0, sticky="nsew", columnspan=4)
         return [True, frame, n, x]
 
     @staticmethod
